@@ -1,5 +1,7 @@
+import { useState } from "react";
 import style from "./style.module.scss";
 export const Header = () => {
+    const [buttonText,setbuttonText] = useState("Create");
 	return <>
 	<div className='w-full h-16 flex flex-row justify-between items-center px-10 border-b-gray-300 border-[1px]'>
         <p className='text-primary-blue font-bold text-xl cursor-pointer'>Decentralized Voting System</p>
