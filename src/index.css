@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+*{
+  --primary-blue: "#0C369f"
+}
+
 body {
   margin: 0;
   padding: 0;

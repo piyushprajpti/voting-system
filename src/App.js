@@ -1,8 +1,13 @@
 import './App.css';
+import Header from './screens/Header';
+import LandingPage from './screens/LandingPage';
 
 function App() {
   return (
-    <div>App</div>
+    <div>
+      <Header/>
+      <LandingPage/>
+    </div>
   );
 }
 
