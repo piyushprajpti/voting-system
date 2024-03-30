@@ -1,0 +1,24 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow-y: auto;
+}
+.stats-row {
+	display: flex;
+	gap: 20px;
+	padding: 20px;
+}
+
+.stat {
+	display: flex;
+	border: 2px solid #afafaf;
+	background-color: #efefef;
+	padding: 30px;
+	align-items: center;
+	border-radius: 10px;
+
+	p {
+		font-size: 20px;
+	}
+}

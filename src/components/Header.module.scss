@@ -1,0 +1,58 @@
+.container {
+	display: flex;
+	border-bottom: 1px solid #cfcfcf;
+}
+
+.search-bar-container {
+	width: 100%;
+	border-radius: 5px;
+	display: flex;
+	align-items: center;
+	padding: 0 20px;
+
+	img {
+		width: 25px;
+		height: 25px;
+		float: left;
+	}
+
+	input {
+		border: none;
+		background-color: transparent;
+		padding: 20px 0;
+		text-indent: 20px;
+		flex: 1;
+		font-size: 20px;
+	}
+
+	.account-wrapper {
+		display: flex;
+		align-items: center;
+		gap: 10px;
+		button {
+			border-radius: 40px;
+			border: none;
+			float: left;
+			font-size: 18px;
+			padding: 10px 20px;
+			background-color: #2e87fd;
+			color: #ffffff;
+		}
+
+		.account {
+			display: flex;
+			gap: 10px;
+			background-color: #cfcfcf;
+			padding: 5px;
+			border-radius: 40px;
+			align-items: center;
+			img {
+				width: 25px;
+				height: 25px;
+			}
+			p {
+				margin-right: 10px;
+			}
+		}
+	}
+}

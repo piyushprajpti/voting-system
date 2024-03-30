@@ -1,0 +1,91 @@
+.container {
+	display: flex;
+	overflow-y: auto;
+	flex-direction: column;
+}
+.search-container {
+	padding: 20px;
+	display: flex;
+	gap: 20px;
+
+	input {
+		padding: 10px;
+		font-size: 20px;
+		width: 100%;
+		border: 1px solid #cfcfcf;
+		background-color: #efefef;
+		border-radius: 10px;
+		text-indent: 20px;
+	}
+	button {
+		padding: 10px;
+		border: 1px solid #cfcfcf;
+		background-color: #efefef;
+		border-radius: 10px;
+	}
+}
+
+.poll-container {
+	padding: 30px;
+	display: flex;
+}
+
+.poll {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+
+	.poll-id-n-time {
+		display: flex;
+		justify-content: space-between;
+
+		.poll-id {
+			display: flex;
+			align-items: center;
+			font-size: 25px;
+			gap: 10px;
+			span {
+				font-weight: bold;
+			}
+		}
+		.poll-live,
+		.poll-closed,
+		.poll-schedule {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			padding: 10px 20px;
+			border-radius: 10px;
+			color: #ffffff;
+			font-size: 18px;
+		}
+		.poll-live {
+			background-color: #34db7a;
+		}
+		.poll-closed {
+			background-color: #db6128;
+		}
+		.poll-schedule {
+			background-color: #000000;
+		}
+	}
+	.poll-name {
+		font-size: 35px;
+	}
+
+	.candidate {
+		display: flex;
+		gap: 20px;
+		align-items: center;
+
+		p {
+			font-size: 30px;
+		}
+
+		button {
+			font-size: 20px;
+			padding: 10px 20px;
+		}
+	}
+}
