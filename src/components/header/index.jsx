@@ -1,13 +1,21 @@
-import { useState } from "react";
 import style from "./style.module.scss";
-export const Header = () => {
-    const [buttonText,setbuttonText] = useState("Create");
-	return <>
-	<div className='w-full h-16 flex flex-row justify-between items-center px-10 border-b-gray-300 border-[1px]'>
-        <p className='text-primary-blue font-bold text-xl cursor-pointer'>Decentralized Voting System</p>
-        <div className='bg-primary-blue rounded-lg'>
-            <p className='text-white px-5 py-2 cursor-pointer'>{buttonText}</p>
-        </div>
-    </div>
-	</>;
+export const Header = ({ onConnectWalletClick, balance, account }) => {
+	return (
+		<div className={style["container"]}>
+			<p>Decentralized Voting System</p>
+			{!account ? (
+				<button onClick={onConnectWalletClick}>
+					Connect To Wallet
+				</button>
+			) : (
+				<div className={style["account-wrapper"]}>
+					<p>Logged In as : {getMaskedAccount(account)}</p>
+				</div>
+			)}
+		</div>
+	);
+};
+
+const getMaskedAccount = (account) => {
+	return (account.slice(0, 6) + "..." + account.slice(38)).toUpperCase();
 };

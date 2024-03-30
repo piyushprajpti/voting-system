@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Work+Sans:wght@400;500&display=swap");
+
 :root {
 	--primary-blue: "#0C369f";
 }
@@ -5,4 +7,39 @@
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+}
+
+#root {
+	width: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+label,
+p,
+textarea,
+input,
+div,
+button {
+	float: left;
+	font-family: "Work Sans", sans-serif;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+	outline: none !important;
+}
+input {
+	min-width: 0;
+}
+.root-container {
+	width: 100%;
+	height: 100vh;
+	display: flex;
 }
