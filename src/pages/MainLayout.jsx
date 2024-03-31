@@ -60,41 +60,14 @@ const MainLayout = () => {
 
 	const getPoll = async () => {
 		const response = await contractInstance.getPoll(parseInt(query));
-		const receipt = await response.target;
-		setPoll(response);
+		setPoll(getPlainObject(response));
 	};
 
 	//26855
 
-	const abc = async () => {
-		const response = await contractInstance.getPoll(26855);
-		// const response = await contractInstance.addVoter(
-		// 	26855,
-		// 	"0x90F79bf6EB2c4f870365E785982E1f101E93b906"
-		// );
-		// const response = await contractInstance.addCandidate(
-		// 	26855,
-		// 	"0x90F79bf6EB2c4f870365E785982E1f101E93b906"
-		// );
-		// const response = await contractInstance.castVote(
-		// 	26855,
-		// 	0,
-		// 	"0x90F79bf6EB2c4f870365E785982E1f101E93b906"
-		// );
-		console.log(JSON.parse(JSON.stringify(response, replacer)));
-	};
-
-	const replacer = (key, value) => {
-		if (typeof value === "bigint") {
-			return value.toString();
-		}
-		return value;
-	};
-
 	return (
 		<div className={style["container"]}>
 			<Sidebar />
-			<button onClick={abc}>ABC</button>
 			<div className={style["content-container"]}>
 				<Header
 					account={defaultAccount}
@@ -104,7 +77,9 @@ const MainLayout = () => {
 					onSearch={getPoll}
 				/>
 				<div className={style["outlet"]}>
-					<Outlet context={[contractInstance, poll]} />
+					<Outlet
+						context={[contractInstance, poll, setQuery, getPoll]}
+					/>
 				</div>
 			</div>
 		</div>
@@ -112,3 +87,25 @@ const MainLayout = () => {
 };
 
 export default MainLayout;
+
+const replacer = (key, value) => {
+	if (typeof value === "bigint") {
+		return Number(value);
+	}
+	return value;
+};
+
+export const getPlainObject = (proxyObject) => {
+	return JSON.parse(JSON.stringify(proxyObject, replacer));
+};
+
+export const POLL_STATUS_SCHEDULED = -1;
+export const POLL_STATUS_LIVE = 1;
+export const POLL_STATUS_CLOSED = 0;
+
+export const getPollStatus = (startTime, endTime) => {
+	const currentTimestamp = Date.now() / 1000;
+	if (startTime > currentTimestamp) return POLL_STATUS_SCHEDULED;
+	else if (endTime < currentTimestamp) return POLL_STATUS_CLOSED;
+	else return POLL_STATUS_LIVE;
+};

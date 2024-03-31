@@ -1,4 +1,4 @@
-export const ContractAddress = "0x2279B7A0a67DB372996a5FaB50D91eAA73d2eBe6";
+export const ContractAddress = "0x0DCd1Bf9A1b36cE34237eEaFef220932846BCD82";
 export const ABI = [
 	{
 		anonymous: false,
@@ -99,9 +99,9 @@ export const ABI = [
 				type: "uint256",
 			},
 			{
-				internalType: "address",
-				name: "candidateId",
-				type: "address",
+				internalType: "string",
+				name: "name",
+				type: "string",
 			},
 		],
 		name: "addCandidate",
@@ -139,11 +139,6 @@ export const ABI = [
 				name: "index",
 				type: "uint256",
 			},
-			{
-				internalType: "address",
-				name: "voter",
-				type: "address",
-			},
 		],
 		name: "castVote",
 		outputs: [],
@@ -171,6 +166,80 @@ export const ABI = [
 		name: "createPoll",
 		outputs: [],
 		stateMutability: "nonpayable",
+		type: "function",
+	},
+	{
+		inputs: [],
+		name: "getMyPolls",
+		outputs: [
+			{
+				components: [
+					{
+						internalType: "uint256",
+						name: "uid",
+						type: "uint256",
+					},
+					{
+						internalType: "string",
+						name: "title",
+						type: "string",
+					},
+					{
+						internalType: "uint256",
+						name: "startTime",
+						type: "uint256",
+					},
+					{
+						internalType: "uint256",
+						name: "endTime",
+						type: "uint256",
+					},
+					{
+						components: [
+							{
+								internalType: "string",
+								name: "name",
+								type: "string",
+							},
+							{
+								internalType: "uint256",
+								name: "voteCount",
+								type: "uint256",
+							},
+						],
+						internalType: "struct Database.Candidate[]",
+						name: "candidates",
+						type: "tuple[]",
+					},
+					{
+						components: [
+							{
+								internalType: "address",
+								name: "id",
+								type: "address",
+							},
+							{
+								internalType: "bool",
+								name: "isVoted",
+								type: "bool",
+							},
+						],
+						internalType: "struct Database.Voter[]",
+						name: "voters",
+						type: "tuple[]",
+					},
+					{
+						internalType: "address",
+						name: "organiser",
+						type: "address",
+					},
+				],
+				internalType: "struct Database.Poll[]",
+				name: "",
+				type: "tuple[]",
+			},
+		],
+		stateMutability: "view",
 		type: "function",
 	},
 	{
@@ -208,9 +277,9 @@ export const ABI = [
 					{
 						components: [
 							{
-								internalType: "address",
-								name: "id",
-								type: "address",
+								internalType: "string",
+								name: "name",
+								type: "string",
 							},
 							{
 								internalType: "uint256",
@@ -260,10 +329,24 @@ export const ABI = [
 				name: "pollId",
 				type: "uint256",
 			},
+		],
+		name: "isPollOwner",
+		outputs: [
 			{
-				internalType: "address",
-				name: "userId",
-				type: "address",
+				internalType: "bool",
+				name: "",
+				type: "bool",
+			},
+		],
+		stateMutability: "view",
+		type: "function",
+	},
+	{
+		inputs: [
+			{
+				internalType: "uint256",
+				name: "pollId",
+				type: "uint256",
 			},
 		],
 		name: "isVoteCasted",
@@ -274,7 +357,7 @@ export const ABI = [
 				type: "bool",
 			},
 		],
-		stateMutability: "nonpayable",
+		stateMutability: "view",
 		type: "function",
 	},
 	{
@@ -283,11 +366,6 @@ export const ABI = [
 				internalType: "uint256",
 				name: "pollId",
 				type: "uint256",
-			},
-			{
-				internalType: "address",
-				name: "userId",
-				type: "address",
 			},
 		],
 		name: "isVoterEligible",
@@ -298,7 +376,7 @@ export const ABI = [
 				type: "bool",
 			},
 		],
-		stateMutability: "nonpayable",
+		stateMutability: "view",
 		type: "function",
 	},
 	{

@@ -11,6 +11,7 @@
 	flex-direction: column;
 
 	.outlet {
+		display: flex;
 		flex: 1;
 		overflow-y: auto;
 	}
