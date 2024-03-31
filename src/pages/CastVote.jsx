@@ -139,13 +139,13 @@ const CastVote = () => {
 							{status === POLL_STATUS_LIVE && (
 								<p className={style["poll-live"]}>
 									Poll is live until{" "}
-									{new Date(poll[3]).toUTCString()} PM
+									{new Date(poll[3] * 1000).toUTCString()} PM
 								</p>
 							)}
 							{status === POLL_STATUS_SCHEDULED && (
 								<p className={style["poll-schedule"]}>
-									Poll will start from
-									{new Date(poll[2]).toUTCString()} PM
+									Poll will start from{" "}
+									{new Date(poll[2] * 1000).toUTCString()} PM
 								</p>
 							)}
 							{status === POLL_STATUS_CLOSED && (
@@ -169,6 +169,7 @@ const CastVote = () => {
 											Vote
 										</button>
 									)}
+									{!eligible && <button>Not Eligible</button>}
 								</div>
 							);
 						})}

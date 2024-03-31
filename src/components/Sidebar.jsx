@@ -7,12 +7,12 @@ const Sidebar = () => {
 		<div className={style["container"]}>
 			<p className={style["brand-name"]}>Decentralized Voting System</p>
 			<div className={style["nav-container"]}>
-				<p
+				{/* <p
 					onClick={() => navigate("/dashboard")}
 					className={style["nav"]}
 				>
 					Dashboard
-				</p>
+				</p> */}
 				<p
 					onClick={() => navigate("/cast-vote")}
 					className={style["nav"]}

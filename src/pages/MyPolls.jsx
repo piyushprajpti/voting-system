@@ -21,10 +21,6 @@ const MyPolls = () => {
 		setMyPolls(getPlainObject(response));
 	};
 
-	const ggg = () => {
-		console.log("hii");
-	};
-
 	useEffect(() => {
 		if (contract) getAllPolls();
 	}, []);
@@ -99,13 +95,7 @@ const MyPolls = () => {
 				<div className={style["polls-list-wrapper"]}>
 					{myPolls.map((poll, index) => {
 						return (
-							<div
-								key={index}
-								onClick={() => {
-									ggg();
-								}}
-								className={style["poll"]}
-							>
+							<div key={index} className={style["poll"]}>
 								<p>#{poll[0]}</p>
 								<p>{poll[1]}</p>
 							</div>
